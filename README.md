@@ -8,7 +8,7 @@
 
 ```bash
 mkdir /opt/registry/api
-git clone https://github.com/getnamingo/registry-api-beta /opt/registry/api
+git clone https://github.com/getnamingo/registry-api /opt/registry/api
 cd /opt/registry/api
 composer install
 mv config.php.dist config.php
