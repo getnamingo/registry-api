@@ -22,14 +22,7 @@ $pool = new Swoole\Database\PDOPool(
         ->withCharset('utf8mb4')
 );
 
-$http = new Server("0.0.0.0", 8080);
-
-// Uncomment and configure for HTTP2/SSL
-// $http->set([
-//     'open_http2_protocol' => true,
-//     'ssl_cert_file' => '/path/to/ssl_cert.crt',
-//     'ssl_key_file' => '/path/to/ssl_key.key',
-// ]);
+$http = new Server("0.0.0.0", 8500);
 
 $rateLimiter = new Rately();
 
