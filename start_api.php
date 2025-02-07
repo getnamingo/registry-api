@@ -187,6 +187,22 @@ $http->on("request", function (Request $request, Response $response) use ($c, $p
             $response->header("Content-Type", "application/json");
             $response->end(json_encode($data));
             return;
+        case '/registrars':
+            $stmt = $pdo->query("SELECT name, url, abuse_email, iana_id FROM registrar");
+            $registrars = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $data = array_map(function ($row) {
+                return [
+                    'name' => $row['name'] ?: 'N/A',
+                    'url' => $row['url'] ?: 'N/A',
+                    'abuse_email' => $row['abuse_email'] ?: 'N/A',
+                    'iana_id' => $row['iana_id'] ?: 'N/A'
+                ];
+            }, $registrars);
+            
+            $response->header("Content-Type", "application/json");
+            $response->end(json_encode($data));
+            return;
         default:
             $data = ['status' => 'error', 'message' => 'Not found.'];
             $response->status(404);
