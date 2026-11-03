@@ -1,3 +1,33 @@
+> [!WARNING]
+> **This repository is deprecated and no longer maintained.**
+>
+> Namingo Registry API has been integrated directly into the main [Namingo Registry](https://github.com/getnamingo/registry) project. All future development, improvements, and bug fixes will take place there.
+>
+> **For new installations, please use [getnamingo/registry](https://github.com/getnamingo/registry) instead.**
+
+> [!IMPORTANT]
+> **Action required for existing installations**
+>
+> If you have previously installed the standalone Namingo Registry API, you must remove it before upgrading Namingo Registry to version 1.0.36.
+>
+> 1. Remove the `api.YOUR_DOMAIN` site block from `/etc/caddy/Caddyfile`.
+> 2. Validate the Caddy configuration and restart Caddy:
+>    ```bash
+>    caddy validate --config /etc/caddy/Caddyfile
+>    systemctl restart caddy
+>    ```
+> 3. Stop and disable the old API systemd service:
+>    ```bash
+>    systemctl stop api.service
+>    systemctl disable api.service
+>    ```
+> 4. Remove the standalone API installation:
+>    ```bash
+>    rm -rf /opt/registry/api
+>    ```
+>
+> Once these steps are completed, proceed with upgrading [Namingo Registry](https://github.com/getnamingo/registry).
+
 # Namingo Registry API for registrars
 
 ## Install
